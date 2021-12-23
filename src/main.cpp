@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
+#include <thread>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 #include "rf62Xsdk.h"
 #include "rf62Xtypes.h"
@@ -67,7 +70,9 @@ int main()
         if (is_connected)
         {
             std::thread receiver = std::thread(receive_profiles, list[index]);
+#ifdef _WIN32
             SetThreadPriority(receiver.native_handle(), THREAD_PRIORITY_HIGHEST);
+#endif
 
             while (true) {
                 std::this_thread::sleep_for(std::chrono::milliseconds(1000));
