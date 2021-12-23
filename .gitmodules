@@ -1,0 +1,3 @@
+[submodule "3rdparty/RF62X-SDK"]
+	path = 3rdparty/RF62X-SDK
+	url = https://github.com/RIFTEK-LLC/RF62X-SDK.git
